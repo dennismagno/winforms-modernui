@@ -114,6 +114,9 @@ namespace MetroFramework.Forms
             set { metroStyleManager = value; }
         }
 
+        [Category(MetroDefaults.PropertyCategory.Appearance)]
+        public bool Pinnable { get; set; }
+
         #endregion
 
         #region Fields
@@ -499,6 +502,9 @@ namespace MetroFramework.Forms
                 if (MinimizeBox)
                     AddWindowButton(WindowButtons.Minimize);
 
+                if (Pinnable)
+                    AddWindowButton(WindowButtons.Pin);
+
                 UpdateWindowButtonPosition();
             }
 
@@ -685,7 +691,8 @@ namespace MetroFramework.Forms
         {
             Minimize,
             Maximize,
-            Close
+            Close,
+            Pin
         }
 
         private Dictionary<WindowButtons, MetroFormButton> windowButtonList;
@@ -714,6 +721,10 @@ namespace MetroFramework.Forms
                     newButton.Text = "1";
                 else
                     newButton.Text = "2";
+            }
+            else if (button == WindowButtons.Pin)
+            {
+                newButton.Text = TopMost ? "=" : "ë";
             }
 
             newButton.Style = Style;
@@ -755,6 +766,11 @@ namespace MetroFramework.Forms
                         btn.Text = "1";
                     }
                 }
+                else if (btnFlag == WindowButtons.Pin)
+                {
+                    TopMost = !TopMost;
+                    btn.Text = TopMost ? "=" : "ë";
+                }
             }
         }
 
@@ -762,7 +778,13 @@ namespace MetroFramework.Forms
         {
             if (!ControlBox) return;
 
-            Dictionary<int, WindowButtons> priorityOrder = new Dictionary<int, WindowButtons>(3) { { 0, WindowButtons.Close }, { 1, WindowButtons.Maximize }, { 2, WindowButtons.Minimize } };
+            Dictionary<int, WindowButtons> priorityOrder = new Dictionary<int, WindowButtons>(4) 
+            {
+                { 0, WindowButtons.Close }, 
+                { 1, WindowButtons.Maximize }, 
+                { 2, WindowButtons.Minimize },
+                { 3, WindowButtons.Pin}
+            };
 
             Point firstButtonLocation = new Point(ClientRectangle.Width - borderWidth - 25, borderWidth);
             int lastDrawedButtonPosition = firstButtonLocation.X - 25;
@@ -793,6 +815,9 @@ namespace MetroFramework.Forms
 
                     windowButtonList[button.Value].Location = new Point(lastDrawedButtonPosition, borderWidth);
                     lastDrawedButtonPosition = lastDrawedButtonPosition - 25;
+
+                    // leave an extra space between icons from index 0-2 and 3+
+                    if (button.Key == 2) lastDrawedButtonPosition = lastDrawedButtonPosition - 10;
                 }
             }
 
