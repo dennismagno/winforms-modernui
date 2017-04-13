@@ -121,6 +121,7 @@
     <Content Include="Data\Books.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\AttachOrDetach_7014.png" />
     <EmbeddedResource Include="Localization\de\MetroToggle.xml" />
     <EmbeddedResource Include="Localization\en\MetroToggle.xml" />
     <EmbeddedResource Include="Localization\de\MetroMessageBoxControl.xml" />

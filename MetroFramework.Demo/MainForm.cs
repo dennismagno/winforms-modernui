@@ -88,5 +88,7 @@ namespace MetroFramework.Demo
         {
             metroTextBox2.Focus();
         }
+
+       
     }
 }

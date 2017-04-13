@@ -116,6 +116,9 @@
     <Compile Include="Controls\MetroDateTime.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\MetroDropDownButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\MetroGrid.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -146,9 +149,7 @@
     <Compile Include="Controls\MetroScrollBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\MetroTabControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Controls\MetroTabControl.cs" />
     <Compile Include="Controls\MetroTabPage.cs">
       <SubType>Component</SubType>
     </Compile>

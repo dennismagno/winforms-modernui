@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\MetroStyleManagerDesigner.cs" />
+    <Compile Include="Controls\MetroDropDownButtonDesigner.cs" />
     <Compile Include="Controls\MetroToggleDesigner.cs" />
     <Compile Include="Controls\MetroRadioButtonDesigner.cs" />
     <Compile Include="Controls\MetroCheckBoxDesigner.cs" />
