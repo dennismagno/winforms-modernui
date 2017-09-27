@@ -329,12 +329,34 @@ namespace MetroFramework.Controls
             }
             else
             {
-                if (_scrollbar.Value >= 0 && _scrollbar.Value < _grid.Rows.Count)
+                try
                 {
-                    _grid.FirstDisplayedScrollingRowIndex = _scrollbar.Value + (_scrollbar.Value == 1 ? -1 : 1) >= _grid.Rows.Count ? _grid.Rows.Count - 1 : _scrollbar.Value + (_scrollbar.Value == 1 ? -1 : 1);
-                }  else
+                    int firstDisplayedRowIndex = 0;
+
+                    if (_scrollbar.Value >= 0 && _scrollbar.Value < _grid.Rows.Count)
+                    {
+                        firstDisplayedRowIndex = _scrollbar.Value + (_scrollbar.Value == 1 ? -1 : 1) >= _grid.Rows.Count ? _grid.Rows.Count - 1 : _scrollbar.Value + (_scrollbar.Value == 1 ? -1 : 1);
+                    }  else
+                    {
+                        firstDisplayedRowIndex = _scrollbar.Value -1;
+                    }
+
+                    while (! _grid.Rows[firstDisplayedRowIndex].Visible)
+	                {
+	                    if (firstDisplayedRowIndex<1) 
+                        {
+                            firstDisplayedRowIndex = 0;
+                        } else
+                        {
+                            firstDisplayedRowIndex -=1;
+                        }
+	                }
+
+                    _grid.FirstDisplayedScrollingRowIndex = firstDisplayedRowIndex;
+                }
+                catch (Exception)
                 {
-                    _grid.FirstDisplayedScrollingRowIndex = _scrollbar.Value -1;
+                    _grid.FirstDisplayedScrollingRowIndex = 0;
                 }
             }
 
