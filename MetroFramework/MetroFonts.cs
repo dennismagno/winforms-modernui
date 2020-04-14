@@ -42,7 +42,8 @@ namespace MetroFramework
     {
         Light,
         Regular,
-        Bold
+        Bold,
+        Italic
     }
 
     public enum MetroWaterMarkWeight
@@ -401,6 +402,8 @@ namespace MetroFramework
                     return Default(12f);
                 if (labelWeight == MetroLabelWeight.Bold)
                     return DefaultBold(12f);
+                if (labelWeight == MetroLabelWeight.Italic)
+                    return DefaultItalic(12f);
             }
             else if (labelSize == MetroLabelSize.Medium)
             {
@@ -410,6 +413,8 @@ namespace MetroFramework
                     return Default(14f);
                 if (labelWeight == MetroLabelWeight.Bold)
                     return DefaultBold(14f);
+                if (labelWeight == MetroLabelWeight.Italic)
+                    return DefaultItalic(14f);
             }
             else if (labelSize == MetroLabelSize.Tall)
             {
@@ -419,6 +424,8 @@ namespace MetroFramework
                     return Default(18f);
                 if (labelWeight == MetroLabelWeight.Bold)
                     return DefaultBold(18f);
+                if (labelWeight == MetroLabelWeight.Italic)
+                    return DefaultItalic(18f);
             }
 
             return DefaultLight(14f);
