@@ -820,7 +820,7 @@ public class ListViewColumnSorter : IComparer
     private CaseInsensitiveComparer ObjectCompare;
 
     private SortModifiers mySortModifier = SortModifiers.SortByText;
-    public SortModifiers _SortModifier
+    public SortModifiers SortModifier
     {
         set
         {

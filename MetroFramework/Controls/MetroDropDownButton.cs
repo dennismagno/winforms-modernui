@@ -40,7 +40,7 @@ using System.Windows.Forms.VisualStyles;
 namespace MetroFramework.Controls
 {
     [Designer("MetroFramework.Design.Controls.MetroDropDownButtonDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
-    [ToolboxBitmap(typeof(Button))]
+    [ToolboxBitmap(typeof(System.Windows.Forms.Button))]
     [DefaultEvent("Click")]
     public class MetroDropDownButton : MetroButton
     {
@@ -62,7 +62,7 @@ namespace MetroFramework.Controls
 
 
         ContextMenuStrip m_SplitMenuStrip;
-        ContextMenu m_SplitMenu;
+        System.Windows.Controls.ContextMenu m_SplitMenu;
 
         TextFormatFlags textFormatFlags = TextFormatFlags.Default;
         #endregion
@@ -89,30 +89,30 @@ namespace MetroFramework.Controls
             }
         }
 
-        [DefaultValue(null)]
-        public ContextMenu SplitMenu
-        {
-            get { return m_SplitMenu; }
-            set
-            {
-                //remove the event handlers for the old SplitMenu
-                if (m_SplitMenu != null)
-                {
-                    m_SplitMenu.Popup -= SplitMenu_Popup;
-                }
+        //[DefaultValue(null)]
+        //public System.Windows.Controls.ContextMenu SplitMenu
+        //{
+        //    get { return m_SplitMenu; }
+        //    set
+        //    {
+        //        //remove the event handlers for the old SplitMenu
+        //        if (m_SplitMenu != null)
+        //        {
+        //            m_SplitMenu.Popup -= SplitMenu_Popup;
+        //        }
 
-                //add the event handlers for the new SplitMenu
-                if (value != null)
-                {
-                    ShowSplit = true;
-                    value.Popup += SplitMenu_Popup;
-                }
-                else
-                    ShowSplit = false;
+        //        //add the event handlers for the new SplitMenu
+        //        if (value != null)
+        //        {
+        //            ShowSplit = true;
+        //            value.Popup += SplitMenu_Popup;
+        //        }
+        //        else
+        //            ShowSplit = false;
 
-                m_SplitMenu = value;
-            }
-        }
+        //        m_SplitMenu = value;
+        //    }
+        //}
 
         [DefaultValue(null)]
         public ContextMenuStrip SplitMenuStrip
@@ -245,15 +245,15 @@ namespace MetroFramework.Controls
         {
             if (showSplit)
             {
-                if (kevent.KeyCode.Equals(Keys.Down) && !isSplitMenuVisible)
-                {
-                    ShowContextMenuStrip();
-                }
+                //if (kevent.KeyCode.Equals(Keys.Down) && !isSplitMenuVisible)
+                //{
+                //    ShowContextMenuStrip();
+                //}
 
-                else if (kevent.KeyCode.Equals(Keys.Space) && kevent.Modifiers == Keys.None)
-                {
-                    State = PushButtonState.Pressed;
-                }
+                //else if (kevent.KeyCode.Equals(Keys.Space) && kevent.Modifiers == Keys.None)
+                //{
+                //    State = PushButtonState.Pressed;
+                //}
             }
 
             base.OnKeyDown(kevent);
@@ -272,7 +272,7 @@ namespace MetroFramework.Controls
             {
                 if (MouseButtons == MouseButtons.None && !isSplitMenuVisible)
                 {
-                    ShowContextMenuStrip();
+                    //ShowContextMenuStrip();
                 }
             }
 
@@ -343,18 +343,18 @@ namespace MetroFramework.Controls
                 return;
             }
 
-            //handle ContextMenu re-clicking the drop-down region to close the menu
-            if (m_SplitMenu != null && e.Button == MouseButtons.Left && !isMouseEntered)
-                skipNextOpen = true;
+            ////handle ContextMenu re-clicking the drop-down region to close the menu
+            //if (m_SplitMenu != null && e.Button == MouseButtons.Left && !isMouseEntered)
+            //    skipNextOpen = true;
 
-            if (dropDownRectangle.Contains(e.Location) && !isSplitMenuVisible && e.Button == MouseButtons.Left)
-            {
-                ShowContextMenuStrip();
-            }
-            else
-            {
-                State = PushButtonState.Pressed;
-            }
+            //if (dropDownRectangle.Contains(e.Location) && !isSplitMenuVisible && e.Button == MouseButtons.Left)
+            //{
+            //    ShowContextMenuStrip();
+            //}
+            //else
+            //{
+            //    State = PushButtonState.Pressed;
+            //}
         }
 
         protected override void OnMouseUp(MouseEventArgs mevent)
@@ -366,19 +366,19 @@ namespace MetroFramework.Controls
             }
 
             // if the right button was released inside the button
-            if (mevent.Button == MouseButtons.Right && ClientRectangle.Contains(mevent.Location) && !isSplitMenuVisible)
-            {
-                ShowContextMenuStrip();
-            }
-            else if (m_SplitMenuStrip == null && m_SplitMenu == null || !isSplitMenuVisible)
-            {
-                SetButtonDrawState();
+            //if (mevent.Button == MouseButtons.Right && ClientRectangle.Contains(mevent.Location) && !isSplitMenuVisible)
+            //{
+            //    ShowContextMenuStrip();
+            //}
+            //else if (m_SplitMenuStrip == null && m_SplitMenu == null || !isSplitMenuVisible)
+            //{
+            //    SetButtonDrawState();
 
-                if (ClientRectangle.Contains(mevent.Location) && !dropDownRectangle.Contains(mevent.Location))
-                {
-                    OnClick(new EventArgs());
-                }
-            }
+            //    if (ClientRectangle.Contains(mevent.Location) && !dropDownRectangle.Contains(mevent.Location))
+            //    {
+            //        OnClick(new EventArgs());
+            //    }
+            //}
         }
 
         protected override void OnPaint(PaintEventArgs pevent)
@@ -763,27 +763,27 @@ namespace MetroFramework.Controls
 
         #region Helper Functions       
 
-        private void ShowContextMenuStrip()
-        {
-            if (skipNextOpen)
-            {
-                // we were called because we're closing the context menu strip
-                // when clicking the dropdown button.
-                skipNextOpen = false;
-                return;
-            }
+        //private void ShowContextMenuStrip()
+        //{
+        //    if (skipNextOpen)
+        //    {
+        //        // we were called because we're closing the context menu strip
+        //        // when clicking the dropdown button.
+        //        skipNextOpen = false;
+        //        return;
+        //    }
 
-            State = PushButtonState.Pressed;
+        //    State = PushButtonState.Pressed;
 
-            if (m_SplitMenu != null)
-            {
-                m_SplitMenu.Show(this, new Point(0, Height));
-            }
-            else if (m_SplitMenuStrip != null)
-            {
-                m_SplitMenuStrip.Show(this, new Point(0, Height), ToolStripDropDownDirection.BelowRight);
-            }
-        }
+        //    if (m_SplitMenu != null)
+        //    {
+        //        m_SplitMenu.Show(this, new Point(0, Height));
+        //    }
+        //    else if (m_SplitMenuStrip != null)
+        //    {
+        //        m_SplitMenuStrip.Show(this, new Point(0, Height), ToolStripDropDownDirection.BelowRight);
+        //    }
+        //}
 
         private void SetButtonDrawState()
         {
