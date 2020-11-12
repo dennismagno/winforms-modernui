@@ -32,7 +32,7 @@ using MetroFramework.Interfaces;
 namespace MetroFramework.Controls
 {
     [Designer("MetroFramework.Design.Controls.MetroTextBoxDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
-    public class MetroTextBox : Control, IMetroControl
+    public class MetroTextBox : System.Windows.Forms.Control, IMetroControl
     {
         #region Interface
 
@@ -208,12 +208,12 @@ namespace MetroFramework.Controls
             set { baseTextBox.WaterMark = value; }
         }
 
-        private Image textBoxIcon = null;
+        private System.Drawing.Image textBoxIcon = null;
         [Browsable(true)]
         [EditorBrowsable(EditorBrowsableState.Always)]
         [DefaultValue(null)]
         [Category(MetroDefaults.PropertyCategory.Appearance)]
-        public Image Icon
+        public System.Drawing.Image Icon
         {
             get { return textBoxIcon; }
             set
@@ -350,16 +350,6 @@ namespace MetroFramework.Controls
         #endregion
 
         #region Routing Fields
-
-        public override ContextMenu ContextMenu
-        {
-            get { return baseTextBox.ContextMenu; }
-            set
-            {
-                ContextMenu = value;
-                baseTextBox.ContextMenu = value;
-            }
-        }
 
         public override ContextMenuStrip ContextMenuStrip
         {
@@ -541,7 +531,7 @@ namespace MetroFramework.Controls
 
         private void BaseTextBoxContextMenuChanged(object sender, EventArgs e)
         {
-            base.OnContextMenuChanged(e);
+            base.OnTextChanged(e);
         }
 
         private void BaseTextBoxClientSizeChanged(object sender, EventArgs e)
@@ -831,7 +821,6 @@ namespace MetroFramework.Controls
             baseTextBox.ChangeUICues += BaseTextBoxChangeUiCues;
             baseTextBox.Click += BaseTextBoxClick;
             baseTextBox.ClientSizeChanged += BaseTextBoxClientSizeChanged;
-            baseTextBox.ContextMenuChanged += BaseTextBoxContextMenuChanged;
             baseTextBox.ContextMenuStripChanged += BaseTextBoxContextMenuStripChanged;
             baseTextBox.CursorChanged += BaseTextBoxCursorChanged;
 

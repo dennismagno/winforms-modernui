@@ -22,7 +22,6 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms.Design;
 
 namespace MetroFramework.Design.Controls
