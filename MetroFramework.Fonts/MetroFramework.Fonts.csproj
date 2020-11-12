@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <AssemblyTitle>MetroFrameworkDesignAssembly.Title</AssemblyTitle>
     <Company>MetroFrameworkDesignAssembly.Company</Company>
     <Product>MetroFrameworkDesignAssembly.Product</Product>

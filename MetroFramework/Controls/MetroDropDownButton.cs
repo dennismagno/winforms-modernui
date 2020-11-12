@@ -62,7 +62,8 @@ namespace MetroFramework.Controls
 
 
         ContextMenuStrip m_SplitMenuStrip;
-        System.Windows.Controls.ContextMenu m_SplitMenu;
+        //System.Windows.Controls.ContextMenu m_SplitMenu;
+        //Unused variable, class not found
 
         TextFormatFlags textFormatFlags = TextFormatFlags.Default;
         #endregion
