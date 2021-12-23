@@ -151,5 +151,14 @@ namespace MetroFramework
                 return GetSavePen("Yellow", MetroColors.Yellow);
             }
         }
+        
+
+        public static Pen Custom
+        {
+            get
+            {
+                return GetSavePen("Custom", MetroColors.Custom);
+            }
+        }
     }
 }
