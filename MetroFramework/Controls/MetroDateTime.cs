@@ -180,7 +180,7 @@ namespace MetroFramework.Controls
         public new bool ShowUpDown
         {
             get { return base.ShowUpDown; }
-            set { base.ShowUpDown = false; }
+            set { base.ShowUpDown = value; }
         }
 
         [Browsable(false)]
